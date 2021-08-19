@@ -33,8 +33,9 @@ python3 catchit.py --scan-path {Scan directory path}
 3. Addition of more checks to the scope of scan.
 
 ## Contributing
+For issue tracking, we use [GitHub Issues](https://github.com/finos/CatchIT/issues).
 
-1. Fork it (<https://github.com/finos/{project slug}/fork>)
+1. Fork it (<https://github.com/finos/CatchIT/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Read our [contribution guidelines](.github/CONTRIBUTING.md) and [Community Code of Conduct](https://www.finos.org/code-of-conduct)
 4. Commit your changes (`git commit -am 'Add some fooBar'`)
