@@ -1,0 +1,13 @@
+{
+  "scanSettings": {
+    "baseBranches": [],
+    "configMode": "LOCAL",
+    "baseBranches": []
+  },
+  "checkRunSettings": {
+    "vulnerableCheckRunConclusionLevel": "failure"
+  },
+  "issueSettings": {
+    "minSeverityLevel": "LOW"
+  }
+}
