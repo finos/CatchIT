@@ -1,0 +1,15 @@
+no-catchit
+$ENV
+$this
+$argv
+${
+changeit
+chageme
+notasecret
+testonly
+junk
+fake
+mock
+notset
+testsecret
+testpassword
