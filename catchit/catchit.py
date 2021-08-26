@@ -261,7 +261,7 @@ def main():
 
     catchit_output.summary["execution_time"]["total"] = time.time() - TS_START
 
-    print(json.dumps(Output_Array, indent=4))
+    print(json.dumps(catchit_output.__dict__, indent=4))
 
     # Exiting with code 1 for blocked findings
     if total_block_findings != 0:

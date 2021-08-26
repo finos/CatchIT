@@ -5,7 +5,7 @@ class CatchIT_Ouput:
     def __init__(self):
         self.code: List[Dict] = []
         self.file: List[Dict] = []
-        self.summary: Dict[str, Any] = {
+        self.summary: Dict[str, Dict] = {
             "findings": {
                 "code": 0,
                 "file": 0,
