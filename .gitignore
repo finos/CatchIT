@@ -13,3 +13,7 @@ docs/contributing.md
 
 # We use YARN
 website/package-lock.json
+
+# Python
+__pycache__
+venv
