@@ -238,7 +238,7 @@ def main():
 
     args = vars(my_parser.parse_args())
 
-    scanning_path = str(args["scan_path"]) or os.getcwd()
+    catchit_config.scanning_path = str(args["scan_path"]) or os.getcwd()
     catchit_config.bash = str(args["bash_path"]) or catchit_config.bash
 
     with open(FILE_REGEXS, "r") as f:
@@ -246,12 +246,12 @@ def main():
 
     # Starting grep functions to scan for suspicious code
     time_grep = time.time()
-    catchit_output.code = exec_grep(regexs_json, scanning_path)
+    catchit_output.code = exec_grep(regexs_json, catchit_config.scanning_path)
     catchit_output.summary["execution_time"]["code"] = time.time() - time_grep
 
     # Starting find functions to scan for suspicious files
     time_find = time.time()
-    catchit_output.file = exec_find(regexs_json, scanning_path)
+    catchit_output.file = exec_find(regexs_json, catchit_config.scanning_path)
     catchit_output.summary["execution_time"]["file"] = time.time() - time_find
 
     total_block_findings = (

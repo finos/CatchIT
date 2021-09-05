@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "catchit"
+version = "0.1.0"
+description = "CatchIT secret scanner to catch sensitive information hardcoded in source-code repositories"
+authors = ["Your Name <you@example.com>"]
+license = "Apache License"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+black = "^21.7b0"
+isort = "^5.9.3"
+mypy = "^0.910"
+pytest = "^6.2.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
