@@ -2,9 +2,9 @@
 {
     "CODE_SCANNING":{
         "AWS-ID": { "regex": "A(AG|CC|GP|ID|IP|KI|NP|NV|PK|RO|SC|SI)A[A-Z0-9]{16}", "confidence": 1, "entropy": 4, "flag": "-PnroI"},
-        "PASSWORD": {"regex": "<?(password|passwd|pwd|secret_?token|private_?key|public_?key|ap[ip]_?key|secretaccesskey)[_a-zA-Z0-9]{0,8}>?\\s{0,2}[=:<]\\s{0,2}['\"]?(?i)(?!(?:pass|invalid))([a-zA-Z0-9][a-zA-Z0-9\\W]{5,40})['\"]?", "confidence" :0.2, "entropy": 3, "flag": "-PnroiI"},
-        "PASSWORD-ARGUMENT": {"regex": "(\\-[Uu])[ \t]+(?i)(?!(?:user))([a-zA-Z0-9_]){4,20} \\-[Pp][ \t]+(?i)(?!(?:pass|pwd))([a-zA-Z0-9@]){4,20}", "confidence": 0.66, "entropy":0, "flag": "-PnroI"},
-        "PASSWORD-URL": {"regex": "[a-zA-Z]{3,10}:\\/\\/(?i)(?!(?:user))[^\\/\\s:@\\$]{3,50}:(?i)(?!(?:pass|pwd))[^\\/\\s:@\\$]{3,50}@.{1,100}", "confidence": 0.72, "entropy": 4, "flag": "-PnroI"},
+        "PASSWORD": {"regex": "<?(password|passwd|pwd|secret_?token|private_?key|public_?key|ap[ip]_?key|secretaccesskey)[_a-zA-Z0-9]{0,8}>?\\s{0,2}[=:<]\\s{0,2}['\"]?(?i)([a-zA-Z0-9][a-zA-Z0-9\\W]{5,40})['\"]?", "confidence" :0.2, "entropy": 3, "flag": "-PnroiI"},
+        "PASSWORD-ARGUMENT": {"regex": "(\\-[Uu])[ \t]+(?i)([a-zA-Z0-9_]){4,20} \\-[Pp][ \t]+(?i)([a-zA-Z0-9@]){4,20}", "confidence": 0.66, "entropy":0, "flag": "-PnroI"},
+        "PASSWORD-URL": {"regex": "[a-zA-Z]{3,10}:\\/\\/(?i)[^\\/\\s:@\\$]{3,50}:(?i)[^\\/\\s:@\\$]{3,50}@.{1,100}", "confidence": 0.72, "entropy": 4, "flag": "-PnroI"},
         "GOOGLE-CLOUD-PLATFORM-API-KEY": {"regex": "AIza[0-9A-Za-z\\-_]{35}", "confidence": 1, "entropy": 3, "flag": "-PnroI"},
         "JWT": {"regex": "ey[A-Za-z0-9_\\-]{18,}\\.ey[A-Za-z0-9_\\-]{18,}(\\.[A-Za-z0-9_\\-]{18,})?", "confidence": 0.9, "entropy": 3, "flag": "-PnroI"}
         },
