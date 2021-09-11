@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent / "catchit"))  # noqa
 
-import catchit # type: ignore
+import catchit  # type: ignore # noqa
 
 with open("catchit/regexs.json", "r") as regexs:
     REGEXS_DICT = json.loads(regexs.read())
@@ -45,7 +45,7 @@ password = "fsdfdsfdsfdfgdfg1234"
 -u anirudd -p asfddsfdfdfgfdg
 
 this_is_not_a_key = AKIAAIOSFODNN7EXAMPLE
-    
+
     """
     )
 

@@ -35,6 +35,7 @@ if platform.system() == "Windows":
     catchit_config.bash = "C:\\Program Files\\Git\\bin\\bash.exe"
     catchit_config.system_path_sep = "**\\*"
 
+
 # Parsing the findings from grep subprocess output and returning the refined findings
 def getFinding_GREP(
     proc: subprocess.CompletedProcess,
