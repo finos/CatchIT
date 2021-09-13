@@ -31,9 +31,18 @@ BASE64_CHARS = "+/=" + ascii_letters + digits
 catchit_output = CatchIT_Ouput()
 catchit_config = Catchit_Config()
 
-if platform.system() == "Windows":
-    catchit_config.bash = "C:\\Program Files\\Git\\bin\\bash.exe"
-    catchit_config.system_path_sep = "**\\*"
+
+def check_operating_system():
+    if platform.system() == "Windows":
+        catchit_config.bash = "C:\\Program Files\\Git\\bin\\bash.exe"
+        catchit_config.system_path_sep = "**\\*"
+        catchit_config.tunnel_flags = "-E"
+
+    elif platform.system() == "Darwin":
+        catchit_config.tunnel_flags = "-E"
+
+    elif platform.system() == "Linux":
+        catchit_config.tunnel_flags = "-P"
 
 
 # Parsing the findings from grep subprocess output and returning the refined findings
@@ -124,7 +133,7 @@ def getFinding_FIND(
 
 
 # Leverages Code_Scanning regexs from regexs.json to flag suspicious code.
-def exec_grep(regexs_json: Dict, scanning_path: str) -> List[Dict]:
+def exec_grep(regexs_json: Dict, scanning_path: str, tunnel_flags: str) -> List[Dict]:
     logger.info("Starting exec grep")
 
     findings = []
@@ -147,6 +156,7 @@ def exec_grep(regexs_json: Dict, scanning_path: str) -> List[Dict]:
                             regex,
                             scanning_path,
                             INVERSE_GREP,
+                            tunnel_flags,
                         ],
                         stdout=subprocess.PIPE,
                         stderr=subprocess.PIPE,
@@ -172,7 +182,7 @@ def exec_grep(regexs_json: Dict, scanning_path: str) -> List[Dict]:
 
 
 # Leverages File_Scanning from regexs.json to get suspicious files.
-def exec_find(regexs_json: Dict, scanning_path: str):
+def exec_find(regexs_json: Dict, scanning_path: str, tunnel_flags: str):
     logger.info("Starting exec find")
 
     findings = []
@@ -188,7 +198,13 @@ def exec_find(regexs_json: Dict, scanning_path: str):
             try:
                 if confidence > 0:
                     proc = subprocess.run(
-                        [catchit_config.bash, EXEC_FIND_SCRIPT, scanning_path, regex],
+                        [
+                            catchit_config.bash,
+                            EXEC_FIND_SCRIPT,
+                            scanning_path,
+                            regex,
+                            tunnel_flags,
+                        ],
                         stdout=subprocess.PIPE,
                         stderr=subprocess.PIPE,
                         timeout=2,
@@ -247,12 +263,16 @@ def main():
 
     # Starting grep functions to scan for suspicious code
     time_grep = time.time()
-    catchit_output.code = exec_grep(regexs_json, catchit_config.scanning_path)
+    catchit_output.code = exec_grep(
+        regexs_json, catchit_config.scanning_path, catchit_config.tunnel_flags
+    )
     catchit_output.summary["execution_time"]["code"] = time.time() - time_grep
 
     # Starting find functions to scan for suspicious files
     time_find = time.time()
-    catchit_output.file = exec_find(regexs_json, catchit_config.scanning_path)
+    catchit_output.file = exec_find(
+        regexs_json, catchit_config.scanning_path, catchit_config.tunnel_flags
+    )
     catchit_output.summary["execution_time"]["file"] = time.time() - time_find
 
     total_block_findings = (
