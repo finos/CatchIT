@@ -258,8 +258,12 @@ def main():
     catchit_config.scanning_path = str(args["scan_path"]) or os.getcwd()
     catchit_config.bash = str(args["bash_path"]) or catchit_config.bash
 
+    # Get the regexs from regexs.json
     with open(FILE_REGEXS, "r") as f:
         regexs_json = json.load(f)
+
+    # Configure the tunnel flags and bash path based on the operating system
+    check_operating_system()
 
     # Starting grep functions to scan for suspicious code
     time_grep = time.time()
