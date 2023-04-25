@@ -15,5 +15,3 @@ RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev
 
 ENTRYPOINT ["python3", "/app/catchit/catchit.py", "--scan-path"]
-
-CMD ["directory-path"]
