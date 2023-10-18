@@ -29,11 +29,6 @@ Goldman Sachs has developed a simple yet powerful framework called CatchIT that 
 python3 catchit.py --scan-path {Scan directory path}
 ```
 
-## Future plans
-1. Command line utility to configure different functionalities such as scanning with a particular pattern, list the name of CatchIT configuration file etc.
-2. Exclusion functionality in the scan as a YAML configuration.
-3. Addition of more checks to the scope of scan.
-
 ## Contributing
 For issue tracking, we use [GitHub Issues](https://github.com/finos/CatchIT/issues).
 
